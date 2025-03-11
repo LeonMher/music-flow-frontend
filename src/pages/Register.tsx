@@ -91,6 +91,7 @@ const Register: React.FC = () => {
           </div>
 
           <Button
+            id="signUpButton"
             sx={{ backgroundColor: "#C16DB4", width: "205px", height: "57px" }}
             variant="contained"
             type="submit"
