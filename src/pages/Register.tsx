@@ -27,7 +27,7 @@ const Register: React.FC = () => {
           lastName,
         }
       );
-      console.log("Registration response:", response.data);
+      console.log("Registration response test:", response.data);
 
       if (response.status === 200 || response.status === 201) {
         navigate("/login");
