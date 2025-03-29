@@ -12,7 +12,6 @@ const MusicRooms = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  // Fetch music rooms from API
   useEffect(() => {
     const fetchRooms = async () => {
       try {
@@ -25,7 +24,6 @@ const MusicRooms = () => {
     fetchRooms();
   }, []);
 
-  // Handle booking submission
   const handleBooking = async () => {
     if (!selectedRoom || !startTime || !endTime) {
       setMessage("Please select a room and time range.");
@@ -64,20 +62,22 @@ const MusicRooms = () => {
   };
 
   return (
-    <div>
-      <h2>Music Rooms</h2>
+    <div className="flex flex-col justify-center items-center">
+      <h1 className="text-5xl font-bold mb-4">Music Rooms</h1>
       <ul>
         {rooms.map((room) => (
-          <li key={room.id}>
+          <div key={room.id} className="mb-4 border-1 p-4 rounded-2xl">
             <strong>{room.name}</strong> - {room.description}{" "}
             <RoomDetails key={room.id} room={room} />
-            <button onClick={() => setSelectedRoom(room.id)}>Select</button>
-          </li>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              onClick={() => setSelectedRoom(room.id)}
+            >
+              Select
+            </button>
+          </div>
         ))}
       </ul>
-      {/* {rooms.map((room) => (
-//         <RoomDetails key={room.id} room={room} />
-//       ))} */}
 
       {selectedRoom && (
         <div>
@@ -110,33 +110,3 @@ const MusicRooms = () => {
 };
 
 export default MusicRooms;
-
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-// import RoomDetails from "./RoomDetails";
-
-// const RoomList = () => {
-//   const [rooms, setRooms] = useState([]);
-
-//   useEffect(() => {
-//     // Fetch all music rooms from the API
-//     axios.get("https://localhost:7125/api/musicrooms")
-//       .then((response) => {
-//         setRooms(response.data);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching rooms:", error);
-//       });
-//   }, []);
-
-//   return (
-//     <div>
-//       <h2>Music Rooms</h2>
-//       {rooms.map((room) => (
-//         <RoomDetails key={room.id} room={room} />
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default RoomList;
