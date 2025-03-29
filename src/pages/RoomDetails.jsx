@@ -8,7 +8,17 @@ const RoomDetails = ({ room }) => {
     <div>
       <h3>{room.name}</h3>
       <p>{room.description}</p>
-      <button onClick={() => setShowCalendar(!showCalendar)}>
+      <button
+        style={{
+          backgroundColor: "#4CAF50",
+          color: "#fff",
+          border: "none",
+          padding: "10px 20px",
+          fontSize: "16px",
+          cursor: "pointer",
+        }}
+        onClick={() => setShowCalendar(!showCalendar)}
+      >
         {showCalendar ? "Hide Calendar" : "Show Busy Dates"}
       </button>
       {showCalendar && <RoomCalendar roomId={room.id} />}
