@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import MusicRooms from "./pages/MusicRooms";
 import MyBookingsPage from "./pages/MyBookingsPage";
+import Navigation from "./components/Navigation";
 
 function App() {
   const isAuthenticated = !!localStorage.getItem("token");
@@ -15,38 +16,10 @@ function App() {
   };
   return (
     <Router>
-      <nav>
-        <ul>
-          {isAuthenticated ? (
-            <>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-
-              <li>
-                <Link to="/mybookings">My Bookings</Link>
-              </li>
-              <li>
-                <Link to="/musicrooms">Music Rooms</Link>
-              </li>
-              <li>
-                <button onClick={handleLogout}>Logout</button>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link id="register" to="/register">
-                  Register
-                </Link>
-              </li>
-            </>
-          )}
-        </ul>
-      </nav>
+      <Navigation
+        isAuthenticated={isAuthenticated}
+        handleLogout={handleLogout}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
